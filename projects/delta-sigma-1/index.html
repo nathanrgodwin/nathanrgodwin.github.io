@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nathan Godwin - Delta-Sigma Modulator</title>
+    <link href="../../css/style.css" type="text/css" rel="stylesheet">
+    <link href="../../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="icon" href="../../favicon.png">
+  </head>
+  <body>
+    <div>
+        <ul id="navbar">
+          <a href="../.."> <li class="nav-index">Nathan Godwin</li></a>
+          <a href="../../resume"> <li class="nav-item">Resume</li></a>
+          <a href=".."><li class="nav-item">Projects</li></a>
+          <a href="../../about"><li class="nav-item">About Me</li></a>
+          <a href="../../contact"><li class="nav-item">Contact</li></a>
+        </ul>
+    </div>
+    <div class="project-window">
+      <div class="p-25 box-a project-view">
+        <div class="project-nav">
+            <a href="..">
+                <div class="project-item">
+                    Contents
+                </div>
+            </a>
+            <a href="../laser-cutter">
+                <div class="project-item">
+                    Laser Cutter
+                </div>
+            </a>
+            <a href="../8-mult">
+                <div class="project-item">
+                    8-bit Multiplier
+                </div>
+            </a>
+            <a href="../gpteam8">
+                <div class="project-item">
+                    GrandPrIEEE
+                </div>
+            </a>
+            <a href="../delta-sigma-1">
+                <div class="project-item">
+                    Delta-Sigma Modulator
+                </div>
+            </a>
+            <a href="../trn-micro">
+                <div class="project-item">
+                    Translational Microscope
+                </div>
+            </a>
+            <a href="../qp">
+                <div class="project-item">
+                    Quarterly Projects
+                </div>
+            </a>
+            <a href="../pol-mount">
+                <div class="project-item">
+                    Polaroid Mount
+                </div>
+            </a>
+            <a href="../switch-cap">
+                <div class="project-item">
+                    Switched-Capacitor Filter
+                </div>
+            </a>
+            <a href="../butterworth">
+                <div class="project-item">
+                    Butterworth Filter
+                </div>
+            </a>
+            <a href="../wien-bridge">
+                <div class="project-item">
+                    Wien-Bridge Oscillator
+                </div>
+            </a>
+        </div>
+      </div>
+      <div class="box-b project-view">
+        <div class="description-holder">
+          <div class="description">
+            <div class="description-main-title">
+              <h1> 
+                Delta-Sigma Modulator
+              </h1>
+            </div>
+            <h3 class="description-title" style="margin: 0"> 
+              A 1st-order design for a delta-sigma modulator.
+            </h3>
+            <br>
+            <div style="display: table; margin: 0 auto;">
+              <a href="https://github.com/nrgodwin">
+                <div class="project-resources">
+                  <i class="fa fa-github fa-2x" aria-hidden="false"></i>
+                  GITHUB
+                </div>
+              </a>
+              <a href="delta_sigma.7z">
+                <div class="project-resources">
+                  <i class="fa fa-download fa-2x" aria-hidden="false"></i>
+                  DOWNLOAD
+                </div>
+              </a>
+            </div>
+            <br>
+            <hr style="border-style: solid; border-color: #F85A3E;
+                      background-color: #F85A3E; color: #F85A3E;
+                      width: 95%; margin-top: 0; padding: 0;">
+            <h3 class="description-title"> 
+              Concept:
+            </h3> 
+            <p class="description-text"> 
+              The delta-sigma modulator is a basic 1-bit sampling system responsible for digitizing an analog
+              signal and reducing low-frequency noise. The modulator takes an input voltage and converts it to
+              a stream of digital information where the ratio of ones and zeros represents the input analog voltage.
+              Additionally, it uses an integrator to shape the quantization noise to higher frequencies. 
+            </p>
+            <img src="block_diagram.png" style="display: block; margin: auto; margin-bottom: 20px; width: 40%; min-width: 400px; max-width: 700px"/>
+            <p class="description-text"> 
+              The output of the 1-bit ADC is a 1-bit output code with the quantization noise of the converter where
+              the quantization noise is equal to the current quantization noise, e<sub>i</sub>, minus the previous
+              quantization noise, e<sub>i-1</sub>. For a first order modulator, the noise starts low at 0Hz and
+              increases until it reaches its maximum at the modulator's sampling frequency f<sub>s</sub>. It would
+              therefore follow that increasing the sampling frequency would decrease the in-band quantization noise.
+              Increasing the order of the modulator by adding another differencer and integrator stage can also
+              reduce the in-band quantization noise by making the output rely on additional error terms.
+              The delta-sigma modulator is best suited to low-frequency sampling applications both because it relies on
+              a high f<sub>s</sub> and because the low-frequency quantization noise is shifted into higher frequencies.
+              The high-frequency noise result can be filtered out with a digital low-pass filter if the signal is low-frequency.
+            </p>
+            <h3 class="description-title"> 
+              Building the Circuit:
+            </h3> 
+              <img src="circuit.png" style="display: block; margin: auto; margin-bottom: 20px; width: 90%; min-width: 500px; max-width: 900px"/>
+            <p class="description-text"> 
+              For an integrator with a 3dB cutoff frequency of 2.5kHz, set RC = 1/&omega;<sub>o</sub>. Letting R = 10k&Omega; gets a
+              capacitor value of 6.6nF. The output of the integrator is attached to a comparator which functions as the 1-Bit ADC with the \
+              reference at ground. The comparator output is then attached to the D input of a flip-flop clocked at 640kHz with rails
+              at &#177;2.5V. Because the output of the integrator is negative, rather than the positive gain shown in the
+              block diagram above, the output of the difference should be V<sub>f</sub>-V<sub>i</sub>. The Q output of the DAC
+              is attached to the positive input of the op-amp differencer.
+            </p>
+            <h3 class="description-title"> 
+              Dynamic Range:
+            </h3> 
+            <p class="description-text"> 
+              Dynamic range is the ratio of the the signal to the noise floor and can be calculated with the equation below:
+            </p>
+            <img src="dynamic_range_eq.png" style="display: block; margin: auto; margin-bottom: 20px; width: 40%; min-width: 100px; max-width: 200px"/>
+            <p class="description-text"> 
+              where B is the bits of the quantizer, L is the order of the modulator, and M is the oversampling ratio. In this
+              instance, the delta-sigma modulator is sampling a 5kHz signal with 640kHz, so the oversampling ratio will be 128.
+              This results in a dynamic range of 59.8054dB.
+            </p>
+            <h3 class="description-title"> 
+              Simulation:
+            </h3> 
+            <p class="description-text"> 
+              Simulating the block diagram with MATLAB Simulink produces the following result:
+            </p>
+            <img src="simulink_output.jpg" style="display: block; margin: auto; margin-bottom: 20px; width: 90%; min-width: 500px; max-width: 900px"/>
+            <h3 class="description-title"> 
+              Testing:
+            </h3> 
+            <p class="description-text"> 
+              Running a 5kHz sine wave through the circuit produces the following result where input is in orange and output is in blue:
+            </p>
+            <img src="oscope_output.jpg" style="display: block; margin: auto; margin-bottom: 20px; width: 90%; min-width: 500px; max-width: 600px"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

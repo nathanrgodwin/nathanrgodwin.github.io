@@ -1,0 +1,403 @@
+html{
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    padding: 0px;
+    margin: 0;
+    height: 100%;
+    background: #FFF8DD;
+    width: 100%;
+    overflow: hidden;
+}
+
+a{
+    text-decoration: none;
+    color: #FF7733;
+}
+
+/*INDIVIDUAL PROJECT PAGES*/
+.project-resources{
+  display: inline;
+  margin: 0px 20px 0px 20px;
+  border-style: solid;
+  padding: 15px 10px 10px 10px;
+  border-radius: 10px
+}
+
+.project-resources:hover{
+  color: white;
+  background-color: #FF7733;
+}
+
+.description{
+  font-family: AdobeGothicStd-Bold, sans-serif;
+  margin: 20px 20px 0px 20px;
+  padding: 0px 0px 0px 10px;
+  border-radius: 10px;
+  border-style: solid;
+  min-height: 88vh;
+  min-width: 300px;
+  overflow: hidden;
+  color: #FF7733;
+  border-color: #F85A3E;
+}
+
+.description-main-title{
+  color: #F85A3E;
+  padding: 0;
+  margin-bottom: 0;
+  line-height: 60px;
+}
+
+.description-title{
+  color: #F85A3E;
+  padding: 0;
+  margin: 0px 10px 0px 10px;
+  line-height: 22px;
+}
+
+.description-main-title::first-line{
+  line-height: 0px;
+}
+
+.description-text{
+    line-height: 22px;
+    padding: 0px 20px 0px 20px;
+    margin-top: 0px;
+    color: black;
+}
+
+.description-holder{
+    width: 100%;
+    height: calc(100vh - 72px);
+    overflow-y: auto !important;
+    padding: 0 0 40px 0px;
+    margin: 0;
+    position: relative;
+}
+
+.in-progress{
+  position: relative;
+  display: inline-block;
+}
+
+.in-progress-tooltip{
+  visibility: hidden;
+  width: 100px;
+  height: 40px;
+  background-color: rgba(0,0,0,.8);
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding-bottom: 15px;
+  position: absolute;
+  z-index: 1;
+}
+
+.in-progress:hover .in-progress-tooltip{
+  visibility: visible;
+}
+/*END INDIVIDUAL PROJECT PAGES*/
+
+/*PROJECT PAGES*/
+.project-description{
+    font-family: AdobeGothicStd-Bold, sans-serif;
+    margin: 20px 20px 0px 20px;
+    line-height: 0px;
+    padding: 0px 0px 0px 10px;
+    border-radius: 10px;
+    border-style: solid;
+    color: #FF7733;
+    border-color: #FF7733;
+    
+}
+
+.project-description:hover{
+    color: white;
+    background: #FF7733;
+}
+
+.project-description p{
+    line-height: 22px;
+    padding: 10px 20px 0px 20px;
+}
+
+.project-nav{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+}
+
+.project-item{
+    width: 100%;
+    height: 40px;
+    margin: 0px 0px 0px 0px;
+    border-bottom-style: solid;
+    border-width: 2px;
+    border-color: DarkGray;
+    text-align: center;
+    font-family: AdobeGothicStd-Bold;
+    font-size: 16px;
+    color: #F85A3E;
+    padding: 10px 0px 0px 0px;
+    line-height:30px;
+}
+
+.project-item:hover{
+    color: white;
+    background: #F85A3E;
+    padding: 10px 0px 0px 0px;
+}
+
+
+.project-view{ 
+  padding: 0; 
+  border-width: 0 2px 0 0; 
+  border-style: solid; 
+  max-width: 500px;
+  min-width: 200px;
+  height: 100%;
+}
+
+.box-a{ border-color: black; background: #FFFEDB;}
+.box-b{ border-style: none; background: white;}
+
+.p-25{ width: 15%; min-width: 250px}
+
+.project-window {
+  position: relative;
+  width: 100%;
+  height: 95.9%;
+  clear: both;
+  display: table;
+  margin: 0;
+}
+
+.project-window .project-view {
+  display: table-cell;
+}
+
+/*PROJECT PAGES*/
+
+
+/*MAIN PAGE*/
+.name{
+  display: block;
+  margin: 10vh auto;
+  width: 500px;
+  min-width: 500px;
+  font-family: AdobeGothicStd-Bold;
+  text-align: center;
+  font-size: 400%;
+  background: pink;
+}
+
+#body-div{
+    position: relative;
+    margin: auto;
+    transform: translateY(20%);
+    width: 300px;
+    display: table;
+}
+
+#body-div a{
+    text-decoration: none;
+    color: #F85A3E;
+}
+
+#body-div a:hover{
+    color: white;
+}
+
+.category{
+    position: relative;
+    color: #F85A3E;
+    text-align: center;
+    margin: 36px;
+    border-style: solid;
+    border-radius: 100px;
+    border-color: #F85A3E;
+    max-width: 600px;
+    width: 50%;
+    min-width: 200px;
+    overflow: hidden;
+    background: white;
+}
+
+.category:hover{
+    color: white;
+    background: #F85A3E;
+}
+/*END MAIN PAGE*/
+
+/*RESUME PAGE*/
+#resume{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  float: top;
+}
+
+#resume-link{
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+}
+
+#resume-link img{
+    height: 40px;
+    width: 30px;
+    margin: 3px 10px 3px 10px;
+}
+
+.pdf{
+  position: absolute;
+  width: 100%;
+  height: 87%;
+  bottom: 6%;
+}
+/*END RESUME PAGE*/
+
+/*CONTACT PAGE*/
+#contact-text{
+    padding: 20px;
+    list-style: none;
+    font-size: 24px;
+    text-align: center;
+    margin: auto;
+    text-decoration: underline;
+}
+
+#contact{
+    padding: 0;
+    position: relative;
+    color: #F85A3E;
+    margin: 36px auto;
+    border-style: solid;
+    border-radius: 20px;
+    border-color: #F85A3E;
+    width: 70%;
+    min-width: 600px;
+    overflow: hidden;
+    background: white;
+    font-family: AdobeGothicStd-Bold, sans-serif;
+}
+
+#contact a{
+    color: #F85A3E;
+}
+/*END CONTACT PAGE*/
+
+/*ABOUT PAGE*/
+#about{
+    position: relative;
+    color: #F85A3E;
+    margin: 36px auto;
+    border-style: solid;
+    border-radius: 20px;
+    border-color: #F85A3E;
+    width: 70%;
+    min-width: 200px;
+    overflow: hidden;
+    background: white;
+    font-family: AdobeGothicStd-Bold, sans-serif;
+    clear: both;
+}
+
+#about-text{
+    color: black;
+    padding: 20px;
+}
+
+#portrait{
+    background-image: url('../about/portrait.jpg');
+    background-position: center center;
+    background-size: 181px 200px;
+    width: 181px;
+    height: 200px;
+    float: left;
+    margin-right: 20px;
+}
+/*END ABOUT PAGE*/
+
+/*NAVIGATION BAR*/
+#navbar{
+    position: relative;
+    top: 0;
+    margin: 0;
+    float: 0;
+    height: 50px;
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    font-family: AdobeGothicStd-Bold, sans-serif;
+    font-style: bold;
+    background: rgba(255,255,255,.8);
+    border-bottom: 2px;
+    border-bottom-style: solid;
+    border-color: black;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+#navbar a{
+    text-decoration: none;
+    color: #FF7733;
+}
+
+.nav-index{
+    position: relative;
+    margin-left: 5%;
+    font-size: 20px;
+    display: inline;
+    padding: 0px 40px 0px 40px;
+}
+
+.nav-index:hover{
+    padding: 20px 40px 20px 40px;
+    background: rgba(120,120,120,.9);
+    border-bottom: 2px;
+    border-bottom-style: solid;
+    color: white;
+    border-color: #FF7733;
+}
+
+.nav-item{
+    display: inline;
+    padding: 0px 2% 0px 2%;
+}
+
+.nav-item:hover{
+    padding: 20px 2% 20px 2%;
+    background: #FF7733;
+    color: white;
+    border-bottom: 2px;
+    border-bottom-style: solid;
+    border-color: #FF7733;
+}
+/*END NAVIGATION BAR*/
+
+.background-page{
+  position: relative;
+  background: #FFF8DD;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  clear: both;
+  display: table;
+}
+
+/*FONTS*/
+@font-face{
+    font-family: AdobeGothicStd-Bold;
+    src: url("../fonts/AdobeGothicStd-Bold.otf");
+}
+/*END FONTS*/
