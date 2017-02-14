@@ -186,23 +186,23 @@ a{
 
 
 /*MAIN PAGE*/
-.name{
-  display: block;
-  margin: 10vh auto;
-  width: 500px;
-  min-width: 500px;
+#name-title{
+  position: relative;
+  top: 10vh;
   font-family: AdobeGothicStd-Bold;
   text-align: center;
-  font-size: 400%;
-  background: pink;
+  color: #F85A3E;
+  font-size: 15vw;
+  line-height: 15vw;
+  margin: 0 20px 0 20px;
+  border-width: 5px;
 }
 
 #body-div{
     position: relative;
-    margin: auto;
-    transform: translateY(20%);
+    margin: 0;
     width: 300px;
-    display: table;
+    display: inline;
 }
 
 #body-div a{
@@ -393,6 +393,22 @@ a{
   padding: 0;
   clear: both;
   display: table;
+}
+
+.background-page-main{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  clear: both;
+  display: table;
+  background-image: url("../background.png");
+  background-size: auto 100%;
+  background-position: left;
+  background-color: white;
+  background-repeat: no-repeat;
 }
 
 /*FONTS*/
