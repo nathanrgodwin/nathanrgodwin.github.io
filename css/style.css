@@ -10,8 +10,7 @@ body{
     height: 100%;
     background: #FFF8DD;
     width: 100%;
-    overflow-x: hidden;
-    float: left;
+    overflow: hidden;
 }
 
 a{
@@ -193,8 +192,8 @@ a{
   font-family: AdobeGothicStd-Bold;
   text-align: center;
   color: #F85A3E;
-  font-size: 30vh;
-  line-height: 30vh;
+  font-size: 15vw;
+  line-height: 15vw;
   margin: 0 20px 0 20px;
   border-width: 5px;
 }
@@ -399,7 +398,7 @@ a{
 .background-page-main{
   position: relative;
   width: 100%;
-  height: calc(100vh - 52px);
+  height: 100%;
   z-index: 1;
   margin: 0;
   padding: 0;
