@@ -406,6 +406,9 @@ a{
   display: table;
   background-image: url("../background.png");
   background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-position: left;
   background-color: white;
   background-repeat: no-repeat;
