@@ -89,7 +89,7 @@
                 Wien-Bridge Oscillator
               </h1>
             </div>
-            <h3 class="description-title" style="margin: 0"> 
+            <h3 class="description-title" style="margin: 0px 10px 0px 10px"> 
               An oscillating system built with the Wien-Bridge architecture.
             </h3>
             <br>
@@ -115,7 +115,54 @@
               Concept:
             </h3> 
             <p class="description-text"> 
-              
+              The Wien-Bridge oscillator is a sine-wave generating oscillator. The oscillator is implemented as a
+              positive gain amplified and pass filter with positive feedback.
+            </p>
+            <h3 class="description-title"> 
+              Circuit Diagram:
+            </h3> 
+            <img src="circuit_diagram.png" style="display: block; margin: auto; margin-bottom: 20px; width: 80%; min-width: 300px; max-width: 600px"/>
+            <h3 class="description-title"> 
+              Derivation of Operation:
+            </h3> 
+            <p class="description-text"> 
+              Let K be the gain of the amplifier and AB be the loop gain. Additionally, let &tau; = RC. The gain and
+              the loop gain can be derived as follows:
+            </p>
+            <img src="wien_derivation.png" style="display: block; margin: auto; margin-bottom: 20px; width: 80%; min-width: 400px; max-width: 500px"/>
+            <p class="description-text"> 
+              This has a zero at &omega; and two poles at &omega;<sub>o</sub> = 1/&tau;. |AB(&omega;<sub>o</sub>)| = K/3.
+              <br>
+              <br>
+              A Nyquist plot is a plot of the frequency response of the system. The stability of an LTI closed-loop system
+              can be observed by examining the Nyquist plot of the open-loop system. If the point -1+j0 is encircled by the
+              Nyquist plot, then the closed-loop system is unstable. If the plot does not encircle the -1+j0 point, then it
+              is stable. For an oscillator, the loop of the Nyquist plot ideally passes through the -1+j0 point. This places
+              the system on the edge between stable and unstable. For the Wien-Bridge oscillator, the Nyquist plot passes
+              through the -1+j0 point when K = 3. This can be seen in the Nyquist plot below.
+            </p>
+            <img src="nyquist.jpg" style="display: block; margin: auto; margin-bottom: 20px; width: 80%; min-width: 400px; max-width: 500px"/>
+            <p class="description-text"> 
+              This results in the closed-loop transfer function:
+            </p>
+            <img src="wien_closed_loop.png" style="display: block; margin: auto; margin-bottom: 20px; width: 80%; min-width: 300px; max-width: 400px"/>
+            <p class="description-text"> 
+              This transfer function has poles at &pm;j/&tau;. This will produce an output sine wave that oscillates from rail-to-rail 
+              at a frequency of f = 1/(2&pi;&tau;). The rail-to-rail oscillation will result in the sine wave being clipped and producing
+              additional harmonics, as shown below:
+            </p>
+            <img src="clipped.png" style="display: block; margin: auto; margin-bottom: 20px; width: 80%; min-width: 300px; max-width: 600px"/>
+            <img src="clipped_harmonics.png" style="display: block; margin: auto; margin-bottom: 20px; width: 80%; min-width: 300px; max-width: 600px"/>
+            <p class="description-text"> 
+              The addition of limiting diodes on the output prevents the sine wave from clipping at the rails, providing a smoother
+              function with fewer harmonics.
+            </p>
+            <img src="circuit_diagram_limited.png" style="display: block; margin: auto; margin-bottom: 20px; width: 80%; min-width: 300px; max-width: 600px"/>
+            <img src="limited.png" style="display: block; margin: auto; margin-bottom: 20px; width: 80%; min-width: 300px; max-width: 600px"/>
+            <img src="limited_fft.png" style="display: block; margin: auto; margin-bottom: 20px; width: 80%; min-width: 300px; max-width: 600px"/>
+            <p class="description-text"> 
+              The Wien-Bridge produced by Hewlett-Packard used a lightbulb in place of R<sub>2</sub> which provided a soft rise to limit the output which
+              served to reduce the amount of harmonics produced by the output limiter.
             </p>
           </div>
         </div>

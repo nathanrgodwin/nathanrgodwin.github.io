@@ -38,7 +38,8 @@ a{
   padding: 0px 0px 0px 10px;
   border-radius: 10px;
   border-style: solid;
-  min-height: 88vh;
+  min-height: 86vh;
+  min-height: 86vh;
   min-width: 300px;
   overflow: hidden;
   color: #FF7733;
@@ -47,7 +48,7 @@ a{
 
 .description-main-title{
   color: #F85A3E;
-  padding: 0;
+  margin: 30px 10px 0px 10px;
   margin-bottom: 0;
   line-height: 60px;
 }
@@ -72,11 +73,24 @@ a{
 
 .description-holder{
     width: 100%;
-    height: calc(100vh - 72px);
+    height: calc(100vh - 90px);
     overflow-y: auto !important;
     padding: 0 0 40px 0px;
     margin: 0;
     position: relative;
+}
+
+.description-holder::-webkit-scrollbar{
+  background-color: white;
+  width: 14px;
+}
+
+.description-holder::-webkit-scrollbar-thumb{
+  background-color: #F85A3E;
+}
+
+.description-holder::-webkit-scrollbar-track{
+  background-color: #e0e0e0;
 }
 
 .in-progress{
@@ -127,10 +141,11 @@ a{
 
 .project-nav{
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 78px);
+    overflow-y: auto !important;
     padding: 0;
     margin: 0;
-    overflow: auto;
+    position: relative;
 }
 
 .project-item{
@@ -162,6 +177,19 @@ a{
   max-width: 500px;
   min-width: 200px;
   height: 100%;
+}
+
+.project-nav::-webkit-scrollbar{
+  background-color: white;
+  width: 14px;
+}
+
+.project-nav::-webkit-scrollbar-thumb{
+  background-color: #F85A3E;
+}
+
+.project-nav::-webkit-scrollbar-track{
+  background-color: #e0e0e0;
 }
 
 .box-a{ border-color: black; background: #FFFEDB;}
@@ -241,6 +269,7 @@ a{
   width: 100%;
   height: 100%;
   float: top;
+  display: block;
 }
 
 #resume-link{
@@ -256,10 +285,25 @@ a{
 }
 
 .pdf{
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 87%;
-  bottom: 6%;
+  height: 88%;
+  z-index: 1;
+  clear: both;
+  padding-bottom: 5%;
+}
+
+.pdf::-webkit-scrollbar{
+  background-color: white;
+  width: 14px;
+}
+
+.pdf::-webkit-scrollbar-thumb{
+  background-color: #F85A3E;
+}
+
+.pdf::-webkit-scrollbar-track{
+  background-color: #e0e0e0;
 }
 /*END RESUME PAGE*/
 
