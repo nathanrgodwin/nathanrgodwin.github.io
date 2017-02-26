@@ -115,8 +115,62 @@
               Concept:
             </h3> 
             <p class="description-text"> 
+              A 3rd-order Butterworth filter is a maximally flat filter with 60dB roll-off. 
+              This implementation is derived from a cascade of a 2nd-order active filter and
+              a 1st-order passive filter.
+            </p>
+            <h3 class="description-title"> 
+              Butterworth Derivation:
+            </h3> 
+            <p class="description-text"> 
+              The 2nd-order Butterworth filter can be derived as follows:
+            </p>
+            <h3 class="description-title"> 
+              Sallen-Key Topology:
+            </h3> 
+            <p class="description-text"> 
+              The Sallen-Key topology is a means of realizing a 2nd-order active filter with the following
+              structure:
+              
+              The generic derivation of the Sallen-Key transfer function is:
+              
+              This transfer function allows a variety of filters to be implemented simply by changing the
+              types of the components. In this instance, Z<sub>1</sub> and Z<sub>2</sub> are chosen to be
+              resistors and Z<sub>3</sub> and Z<sub>4</sub> are chosen to be capacitors. This arrangement
+              creates a 2nd-order low pass filter. The characteristics of this filter can then be matched
+              to a Butterworth filter of the desired cutoff frequency.
+            </p>
+            <h3 class="description-title"> 
+              Picking components:
+            </h3> 
+            <p class="description-text"> 
               
             </p>
+            <h3 class="description-title"> 
+              1st-order Stage:
+            </h3> 
+            <p class="description-text"> 
+              
+            </p>
+            <h3 class="description-title"> 
+              Poles and Zeros:
+            </h3> 
+            <p class="description-text"> 
+              
+            </p>
+            <h3 class="description-title"> 
+              Bode Plot:
+            </h3> 
+            <p class="description-text"> 
+              
+            </p>
+            <h3 class="description-title"> 
+              Testing:
+            </h3> 
+            <p class="description-text"> 
+              
+            </p>
+            
           </div>
         </div>
       </div>
