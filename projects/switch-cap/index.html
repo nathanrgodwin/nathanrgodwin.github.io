@@ -120,10 +120,19 @@
               The bandpass functionality is created by shifting the low-pass filter's frequency to the desired cutoff frequency.
             </p>
             <h3 class="description-title"> 
+              Equivalent Circuit:
+            </h3> 
+            <img src="schematic.jpg" style="display: block; margin: auto; margin-bottom: 20px; width: 90%; min-width: 400px; max-width: 700px"/>
+            <h3 class="description-title"> 
               Switched Capacitor Filter:
             </h3> 
             <p class="description-text"> 
-              
+              The switched capacitor filter functions as a discrete time filter for an analog input. By switching charge
+              in and out of capacitors, the filter can be made to model a filter with continuous-time RC components. This works
+              because the charge on the capacitor is q = CV and the charge is transferred at a rate of f, where f is the
+              switching frequency, I = qf, the switched capacitor can be modelled as a resistor where R = V/I = (q/C)/(qf)
+              = 1/(Cf). The advantage to a switched capacitor filter is that it can virtually eliminate the component 
+              tolerances found in passive components, increasing the accuracy of the filter.
             </p>
             <h3 class="description-title"> 
               Maximally-flat Filter:
@@ -136,13 +145,38 @@
               Derivation of 4th-order, maximally-flat, bandpass filter:
             </h3> 
             <p class="description-text"> 
-              
+              Starting with the maximally-flat 2nd-order low-pass filter:
+              <img src="lp_tf.png" style="display: block; margin: auto; margin-bottom: 20px; width: 40%; min-width: 250px; max-width: 250px"/>
+              Transforming it with a LP-BP transformation s &rarr; Q(&omega;<sub>o</sub>/s + s/&omega;<sub>o</sub>) gives the
+              4th-order band-pass transfer function:
+              <img src="bp_tf.png" style="display: block; margin: auto; margin-bottom: 20px; width: 40%; min-width: 400px; max-width: 700px"/>
             </p>
             <h3 class="description-title"> 
               Conversion to biquad, switched-capacitor filters:
             </h3> 
             <p class="description-text"> 
-              
+              The 4th-order band-pass transfer function can be converted into a cascade of biquad transfer functions
+              H<sub>1</sub>(s) and H<sub>2</sub>(s).
+              <img src="biquad_tf.png" style="display: block; margin: auto; margin-bottom: 20px; width: 40%; min-width: 250px; max-width: 250px"/>
+              For f<sub>o</sub> = 10kHz, Q = 10, and G = 6dB, we can determine the bandwidth to be BW = f<sub>o</sub>/Q
+              = 1kHz and &omega;<sub>k</sub> to be BW/2 = (2&pi;)(500Hz). The properties of our biquad filters can be calculated as follows:
+              <img src="biquad_prop.png" style="display: block; margin: auto; margin-bottom: 20px; width: 40%; min-width: 400px; max-width: 700px"/>
+            </p>
+            <h3 class="description-title"> 
+              Simulated Bode Plot:
+            </h3> 
+            <p class="description-text"> 
+              The equivalent circuit diagram was simulated in PSPICE and produced the following bodes plot:
+              <img src="bode1.JPG" style="display: block; margin: auto; margin-bottom: 20px; width: 40%; min-width: 400px; max-width: 700px"/>
+              <img src="bode2.JPG" style="display: block; margin: auto; margin-bottom: 20px; width: 40%; min-width: 400px; max-width: 700px"/>
+            </p>
+            <h3 class="description-title"> 
+              Measurement:
+            </h3> 
+            <p class="description-text"> 
+              The circuit was built with the MF10 switched capacitor active filter building block and produced the following result:
+              <img src="measure.png" style="display: block; margin: auto; margin-bottom: 20px; width: 90%; min-width: 400px; max-width: 1000px"/>
+              which shows the -3dB cut-off at 9.506kHz and 10.59kHz.
             </p>
           </div>
         </div>
