@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage[letterpaper, margin=0.9in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
+\usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
+\begin{document}
+KCL at node X:\\
+\\
+\begin {gather*}
+\frac{V_x-V_{in}}{Z_1} + \frac{V_x-V_{out}}{Z_3} + \frac{V_x-V_+}{Z_2} = 0\\
+\\
+\frac{V_{out}-V_x}{Z_2} + \frac{V_{out}}{Z_4} = 0\\
+\\
+V_x = V_{out}(\frac{Z_2}{Z_4}+1)\\
+\\
+\frac{V_{out}}{V_{in}} = \frac{Z_3Z_4}{Z_1Z_2+Z_3(Z_1+Z_2)+Z_3Z_4}\\
+\\
+\frac{V_{out}}{V_{in}} = \frac{1}{1+sC_1(R_1+R_2)+s^2C_1C_2R_1R_2}\\
+= \frac{1}{1+\frac{2\zeta s}{\omega_o}+\frac{s^2}{{\omega_o}^2}}\\
+\end {gather*}
+Butterworth Derivation:\\
+\\
+\begin {gather*}
+{|H(\omega)|}^2  = \frac{1}{{(1-{(\frac{\omega}{\omega_o})}^2)}^2 +{(\frac{2\zeta\omega}{\omega_o})}^2}\\
+\\
+\frac{\delta\frac{1}{{|H(\omega)}^2}}{\delta\omega} = \frac{\delta}{\delta\omega}[{(1-{(\frac{\omega}{\omega_o})}^2)}^2 + {(\frac{2\zeta\omega}{\omega_o})}^2] = 0\\
+\\
+\frac{\delta}{\delta\omega}[{(1-\omega^2)}^2 + {(2\zeta\omega)}^2] = 0\\
+\\
+2(1-\omega^2)(-2\omega) + 8\omega^2\omega = 0\\
+\\
+\omega = 0, = \sqrt{1-2\zeta^2}\\
+\end {gather*}
+No ripple occurs in the passband if $\omega$ = $\sqrt{1-2\zeta^2}$ = 0 so $\zeta$ = $\frac{1}{\sqrt{2}}$.
+\end{document}
