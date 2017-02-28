@@ -100,7 +100,7 @@
               <i class="fa fa-warning" aria-hidden="false"></i>
             </div>
             <br>
-            <div style="display: table; margin: 0 auto;">
+           <!-- <div style="display: table; margin: 0 auto;">
               <a href="https://github.com/nathanrgodwin">
                 <div class="project-resources">
                   <i class="fa fa-github fa-2x" aria-hidden="false"></i>
@@ -114,7 +114,7 @@
                 </div>
               </a>
             </div>
-            <br>
+            <br>-->
             <hr style="border-style: solid; border-color: #F85A3E;
                       background-color: #F85A3E; color: #F85A3E;
                       width: 95%; margin-top: 0; padding: 0;">
@@ -131,7 +131,130 @@
               imaging is limited. The new system, named flyBAM, places the free-moving fly in an arena beneath a fixed objective lens of a microscope
               and moving the arena beneath the lens in order to keep the fly in frame. The researchers leading the project, Dhruv Grover and Takeo
               Katsuki, provided us with an OpenCV based system for detecting fly movement direction. Our team's role on the project was to develop a
-              high speed link from the computer running the image processing to the microscope's XY-stage controller (C-867 PILine® Motion Controller).
+              high speed SPI link from the computer running the image processing to the microscope's XY-stage controller (C-867 PILine® Motion Controller).
+            </p>
+            <h3 class="description-title"> 
+              Design:
+            </h3> 
+            <p class="description-text"> 
+              The SPI link needs to provide a method to transfer movement commands to the microscope stage at a rate
+              faster than the fly's rate of movement. To avoid the overhead of the Windows USB scheduler and the C-867's
+              USB command interpreter, a TI Tiva C Series ARM development board was selected to handle communication from
+              a PCIe connected DAq to the stage controller. Although the C-867 does not have an officially supported SPI interface,
+              the Physik Instrumente engineers claimed to have established a connection to the device over SPI and sent us the
+              SPI documentation for the C-867. The component of the design that my team handled is marked in green on the system diagram below.
+              <img src="system_diagram.png" style="display: block; margin: auto; margin-bottom: 20px; width: 60%; border-radius: 5px; min-width: 400px"/>
+              The implementation of the Tiva software is described in the system diagram below:
+              <img src="tiva_system_diagram.png" style="display: block; margin: auto; margin-bottom: 20px; width: 60%; border-radius: 5px; min-width: 400px"/>
+            </p>
+            <h3 class="description-title"> 
+              C-867 Packet Structure:
+            </h3> 
+            <p class="description-text"> 
+              The C-867 SPI interface requires a specific SPI implementation which, in addition to the typical CLK, MISO, MOSI, and CS lines,
+              also requires a LDAT line for data latching at the beginning and end of each packet. The structure of the data
+              packets is:
+              <img src="packet_struct.png" style="display: block; margin: auto; margin-bottom: 20px; width: 70%; border-radius: 5px; min-width: 400px"/>
+              where bytes and bits are ordered MSB first.
+              <br>
+              <table style="text-align:center; display: table; margin: auto; margin-bottom: 20px">
+                <tr>
+                  <td>
+                    PID/ST
+                  </td>
+                  <td>
+                    |
+                  </td>
+                  <td>
+                    ID and STATUS bits
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    CTR2/CNT1
+                  </td>
+                  <td>
+                    |
+                  </td>
+                  <td>
+                    DS2 control and number of DS1 words
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    DS2/Flags
+                  </td>
+                  <td>
+                    |
+                  </td>
+                  <td>
+                    Slow data transfer/On-Target Flags
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    DS1
+                  </td>
+                  <td>
+                    |
+                  </td>
+                  <td>
+                    Axis target position
+                  </td>
+                </tr>                
+                <tr>
+                  <td>
+                    CRC-16
+                  </td>
+                  <td>
+                    |
+                  </td>
+                  <td>
+                    Error detecting code
+                  </td>
+                </tr>
+              </table>
+              The DS2 data is used for transferring the Global Command Set (GCS) which passes ASCII commands into the C-867's interpreter.
+              If CTR2 indicates that no DS2 data is sent than no GCS commands are expected. The DS1 data is a 32bit word which contains the
+              target position of an axis. While the C-867 supports up to 15 axes, we only need to send data for 2 axes, which means that we
+              send two DS1 words.
+            </p>
+            <h3 class="description-title"> 
+              CRC-16:
+            </h3> 
+            <p class="description-text"> 
+              The cyclic redundancy check (CRC) is an error-detecting code which passes the dataset through a linear-feedback shift register
+              with a specified polynomial. The output of this procedure is attached to the original message and the code is compared to the
+              message at the receiver side to ensure that all data was sent correctly. The C-867 uses a CRC-16 with a polynomial of 0x8005 and
+              an initial value of 0xFFFF.
+            </p>
+            <h3 class="description-title"> 
+              Tiva Code:
+            </h3> 
+            <p class="description-text"> 
+              The Tiva MCU was programmed in C. The correct registers were written to enable SPI communication and SPI and packet forming
+              functions were developed. While the Tiva had built-in CRC generation, its polynomial options were limited so CRC-16 functions
+              were written to use the 0x8005 polynomial. 
+            </p>
+            <h3 class="description-title"> 
+              Problems:
+            </h3> 
+            <p class="description-text"> 
+              With the packet generation, sending, and receiving functions completed, we began attempts to send data to the C-867. The 
+              response packets from the controller indicated that the sending packet had a CRC error, however, the CRC generation was 
+              double checked and confirmed to be correct. The on-target flags and CRC from the response packets confirmed that we were
+              correctly receiving the response and using the correct CRC-16 implementation. To further evaluate our implementation, we 
+              sent packets to a z-axis piezo controller(E-709) produced by Physik Instrumente which utilizes an identical SPI configuration
+              without an LDAT line. The responses from the E-709 indicated that our SPI and CRC implementations were correct. After discovering
+              some registers on the E-709 which were necessary to enable SPI control of the E-709 piezo, we achieved movement of the z-axis piezo.
+              Unfortunately, the same registers were not present on the C-867.
+            </p>
+            <h3 class="description-title"> 
+              <i class="fa fa-warning" aria-hidden="false"></i>&nbsp; 
+              Next Steps:
+            </h3> 
+            <p class="description-text"> 
+              Determine why the C-867 is refusing SPI commands.
             </p>
           </div>
         </div>
