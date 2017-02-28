@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nathan Godwin - Cymer DVT</title>
+    <link href="../../css/style.css" type="text/css" rel="stylesheet">
+    <link href="../../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="icon" href="../../favicon.png">
+  </head>
+  <body>
+    <div>
+        <ul id="navbar">
+          <a href="../.."> <li class="nav-index">Nathan Godwin</li></a>
+          <a href="../../resume"> <li class="nav-item">Resume</li></a>
+          <a href=".."><li class="nav-item">Projects</li></a>
+          <a href="../../about"><li class="nav-item">About Me</li></a>
+          <a href="../../contact"><li class="nav-item">Contact</li></a>
+        </ul>
+    </div>
+    <div class="project-window">
+      <div class="p-25 box-a project-view">
+        <div class="project-nav">
+            <a href="..">
+                <div class="project-item">
+                    Contents
+                </div>
+            </a>
+            <a href="../laser-cutter">
+                <div class="project-item">
+                    Laser Cutter
+                </div>
+            </a>
+            <a href="../8-mult">
+                <div class="project-item">
+                    8-bit Multiplier
+                </div>
+            </a>
+            <a href="../gpteam8">
+                <div class="project-item">
+                    Grand PrIEEE
+                </div>
+            </a>
+            <a href="../delta-sigma-1">
+                <div class="project-item">
+                    Delta-Sigma Modulator
+                </div>
+            </a>
+            <a href="../trn-micro">
+                <div class="project-item">
+                    Translational Microscope
+                </div>
+            </a>
+            <a href="../qp">
+                <div class="project-item">
+                    Quarterly Projects
+                </div>
+            </a>
+            <a href="../pol-mount">
+                <div class="project-item">
+                    Polaroid Mount
+                </div>
+            </a>
+            <a href="../switch-cap">
+                <div class="project-item">
+                    Switched-Capacitor Filter
+                </div>
+            </a>
+            <a href="../butterworth">
+                <div class="project-item">
+                    Butterworth Filter
+                </div>
+            </a>
+            <a href="../wien-bridge">
+                <div class="project-item">
+                    Wien-Bridge Oscillator
+                </div>
+            </a>
+            <a href="../nathanrgodwin">
+                <div class="project-item">
+                    nathanrgodwin.com
+                </div>
+            </a>
+            <a href="../cymer">
+                <div class="project-item">
+                    Cymer DVT
+                </div>
+            </a>
+        </div>
+      </div>
+      <div class="box-b project-view">
+        <div class="description-holder">
+          <div class="description">
+            <div class="description-main-title">
+              <h1> 
+                Cymer DVT
+              </h1>
+            </div>
+            <h3 class="description-title" style="margin: 0px 10px 0px 10px"> 
+              A design verification testing system written in Python for the 
+              timing and energy module for Cymer's EUV light source.
+            </h3>
+            <br>
+            <div class="description-title" style="display: table; margin: 0 auto; font-size: 30px; text-align: center;">
+              <i class="fa fa-briefcase" aria-hidden="false"></i>
+                Work Project
+              <i class="fa fa-briefcase" aria-hidden="false"></i>
+            </div>
+            <div class="description-title" style="display: table; margin: 10px auto; font-size: 22px; text-align: center;">
+               Details and code may be limited
+            </div>
+            <br>
+            <!--<div style="display: table; margin: 0 auto;">
+              <a href="https://github.com/nathanrgodwin">
+                <div class="project-resources">
+                  <i class="fa fa-github fa-2x" aria-hidden="false"></i>
+                  GITHUB
+                </div>
+              </a>
+              <a href="laser-cutter.7z">
+                <div class="project-resources">
+                  <i class="fa fa-download fa-2x" aria-hidden="false"></i>
+                  DOWNLOAD
+                </div>
+              </a>
+            </div>
+            <br>-->
+            <hr style="border-style: solid; border-color: #F85A3E;
+                      background-color: #F85A3E; color: #F85A3E;
+                      width: 95%; margin-top: 0; padding: 0;">
+            <h3 class="description-title"> 
+              Disclaimer:
+            </h3> 
+            <p class="description-text"> 
+              To remain in accordance with my NDA, this write up will contain only publicly available knowledge from sources
+              including but not limited to Cymer/ASML's public-facing webpages, publicly available patent applications, 
+              or optics journals.
+            </p>
+            <h3 class="description-title"> 
+              Concept:
+            </h3> 
+            <p class="description-text"> 
+              Cymer is a San Diego based company that produces deep ultraviolet and extreme ultraviolet (EUV) light
+              sources used for semiconductor lithography. EUV is significant because it provides the means to advance
+              semiconductor feature size below the 22nm node. The work that I did at Cymer was the production of an automated
+              design verification system for the Timing and Energy Module for their EUV system.
+            </p>
+            <h3 class="description-title"> 
+              EUV and Plasma-Produced-Lasers:
+            </h3> 
+            <p class="description-text"> 
+              Cymer's EUV systems produce 13.5nm laser light through a method known as plasma-produced-lasers. A high
+              energy laser, generated in the sub-fab is transmitted up to a vacuum chamber on the fab level. The vacuum chamber is required
+              because at 13.5nm, the light is absorbed quickly in air. The laser is then focused onto
+              a spot in front of a large concave focusing mirror. Tin droplets of about 30um in diameter are fired in front
+              of the mirror where they are hit by the high energy laser at a rate of 50kHz. The tin is vaporized into
+              laser-produced-plasma which generates photons at approximately 13.5nm. These photos are collected and reflected
+              by the mirror where they are transmitted to a focus point and enter the scanner. In the scanner, the
+              EUV light is projected onto a semiconductor mask where it produces the required features on a silicon wafer.
+            </p>
+            <h3 class="description-title"> 
+              Pre-pulse and Main-Pulse:
+            </h3> 
+            <p class="description-text"> 
+              In order to ensure that a maximum amount of plasma is produced by the tin droplet,
+              the droplet is illuminated twice by the 30kW; these illuminations are known as pre-pulse and main-pulse. Pre-pulse
+              hits the droplet at a lower energy than main-pulse and flattens the droplet into a pancake shape; this
+              allows a larger surface area of the droplet to be exposed to the main laser pulse.
+            </p>
+            <h3 class="description-title"> 
+              Timing and Energy Module:
+            </h3> 
+            <p class="description-text"> 
+              The Timing and Energy module (TEM) is a system within the high energy laser system which monitors signals from the high
+              energy laser system generators as well as sets triggers for the pre-pulse and main-pulse triggers from a primary pulse
+              trigger or to meet certain specifications. The actions of the TEM are controlled by an internal FPGA and the module
+              includes a variety of interfaces.
+            </p>
+            <h3 class="description-title"> 
+              Testing the TEM:
+            </h3> 
+            <p class="description-text"> 
+              The engineers at Cymer wanted a Design Verification Test (DVT) to ensure that changes made to the TEM's code
+              did not affect the overall functionality before the code in the clean room module was updated. This would simplify
+              the debug process because it would reduce the number of times that engineers would need to suit up to resolve
+              problems on clean room equipment.
+              <br>
+              <br>
+              An existing set of test scripts was written for a previous TEM version, however significant changes to the TEM prevented
+              this old script from working properly. The old testing system took approximately 8 hours to run and required continuous
+              operator presence to adjust the test conditions. I wrote a new suite of Python scripts to test the inputs, outputs, and
+              functionality of the TEM system. The suite utilized an RS232 serial connection to write data to registers in the FPGA in
+              the TEM; this method provided a means to control the functionality and output characteristics of the TEM. The outputs of
+              the TEM were routed through a four port output mux to an oscilloscope. The oscilloscope was connected to the script PC via ethernet.
+              This oscilloscope connection was used to determine if the outputs of the TEM were functioning correctly. The scripts had
+              a variety of modes: 'no operator' which runs only tests with no operator intervention required, 'test select' which allows
+              user selection of which tests to run, 'full output' which used the actual output ports instead of the front output mux.
+              Additional scripts were developed for manual and automated reading and writing of FPGA registers.
+            </p>
+            <h3 class="description-title"> 
+              Result:
+            </h3>
+            <p class="description-text"> 
+              The Python scripts resulted in a suite of over 8000 tests on a variety of outputs with 6 out of 9 of the test procedures requiring
+              no operator intervention. Including scripts that require operator intervention, the testing process took
+              1 hour, a 7 hour reduction in operator-on-bench time from the previous script. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
