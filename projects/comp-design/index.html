@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nathan Godwin - Computer Design</title>
+    <link href="../../css/style.css" type="text/css" rel="stylesheet">
+    <link href="../../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="icon" href="../../favicon.png">
+  </head>
+  <body>
+    <div>
+        <ul id="navbar">
+          <a href="../.."> <li class="nav-index">Nathan Godwin</li></a>
+          <a href="../../resume"> <li class="nav-item">Resume</li></a>
+          <a href=".."><li class="nav-item">Projects</li></a>
+          <a href="../../about"><li class="nav-item">About Me</li></a>
+          <a href="../../contact"><li class="nav-item">Contact</li></a>
+        </ul>
+    </div>
+    <div class="project-window">
+      <div class="p-25 box-a project-view">
+        <div class="project-nav">
+            <a href="..">
+                <div class="project-item">
+                    Contents
+                </div>
+            </a>
+            <a href="../laser-cutter">
+                <div class="project-item">
+                    Laser Cutter
+                </div>
+            </a>
+            <a href="../8-mult">
+                <div class="project-item">
+                    8-bit Multiplier
+                </div>
+            </a>
+            <a href="../gpteam8">
+                <div class="project-item">
+                    Grand PrIEEE
+                </div>
+            </a>
+            <a href="../delta-sigma-1">
+                <div class="project-item">
+                    Delta-Sigma Modulator
+                </div>
+            </a>
+            <a href="../trn-micro">
+                <div class="project-item">
+                    Translational Microscope
+                </div>
+            </a>
+            <a href="../qp">
+                <div class="project-item">
+                    Quarterly Projects
+                </div>
+            </a>
+            <a href="../pol-mount">
+                <div class="project-item">
+                    Polaroid Mount
+                </div>
+            </a>
+            <a href="../switch-cap">
+                <div class="project-item">
+                    Switched-Capacitor Filter
+                </div>
+            </a>
+            <a href="../butterworth">
+                <div class="project-item">
+                    Butterworth Filter
+                </div>
+            </a>
+            <a href="../wien-bridge">
+                <div class="project-item">
+                    Wien-Bridge Oscillator
+                </div>
+            </a>
+            <a href="../nathanrgodwin">
+                <div class="project-item">
+                    nathanrgodwin.com
+                </div>
+            </a>
+            <a href="../cymer">
+                <div class="project-item">
+                    Cymer DVT
+                </div>
+            </a>
+        </div>
+      </div>
+      <div class="box-b project-view">
+        <div class="description-holder">
+          <div class="description">
+            <div class="description-main-title">
+              <h1> 
+                Computer Design
+              </h1>
+            </div>
+            <h3 class="description-title">  
+              A design of a computer with NAND gate chips.
+            </h3>
+            <br>
+            <div class="description-title" style="display: table; margin: 0 auto; font-size: 30px">
+              <i class="fa fa-warning" aria-hidden="false"></i>
+                Project in Progress
+              <i class="fa fa-warning" aria-hidden="false"></i>
+            </div>
+            <br>
+            <div style="display: table; margin: 0 auto;">
+              <a href="https://github.com/nathanrgodwin/polaroid_stand/">
+                <div class="project-resources">
+                  <i class="fa fa-github fa-2x" aria-hidden="false"></i>
+                  GITHUB
+                </div>
+              </a>
+              <a href="https://github.com/nathanrgodwin/polaroid_stand/archive/master.zip">
+                <div class="project-resources">
+                  <i class="fa fa-download fa-2x" aria-hidden="false"></i>
+                  DOWNLOAD
+                </div>
+              </a>
+            </div>
+            <br>
+            <hr style="border-style: solid; border-color: #F85A3E;
+                      background-color: #F85A3E; color: #F85A3E;
+                      width: 95%; margin-top: 0; padding: 0;">
+            <h3 class="description-title"> 
+              Concept:
+            </h3> 
+            <p class="description-text"> 
+              Originally, the goal of this project was to design a computer using complementary PMOS and NMOS transistors, however the cost of purchasing the discrete transistors proved prohibitive, so NAND
+              gates were selected as a cheaper alternative to implement the logic.
+            </p>
+            <h3 class="description-title"> 
+              Design phase:
+            </h3> 
+            <p class="description-text"> 
+              The first step of the design process is the determination of the processor instruction set and operation bit
+              length. A good balance between performance and price was a variable length of 8 bits and an op code of 4 bits:
+              <table style="text-align:center; display: table; margin: auto; margin-bottom: 20px; ">
+                <tr>
+                  <td>
+                    Instruction
+                  </td>
+                  <td style="padding: 10px">
+                    Operation
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    ADD Y A B
+                  </td>
+                  <td style="padding: 10px">
+                    Adds A and B and puts the result in register Y. 
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    ADDC Y A B
+                  </td>
+                  <td style="padding: 10px">
+                     Adds A and B with the carry in from the carry register and puts the result in register Y. 
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    SUB Y A B
+                  </td>
+                  <td style="padding: 10px">
+                     Subtracts B from A and puts the result in register Y. 
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    SUBC Y A B
+                  </td>
+                  <td style="padding: 10px">
+                     Subtracts B from A with the carry in from the carry register and puts the result in register Y. 
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    MULT Y A B
+                  </td>
+                  <td style="padding: 10px">
+                     Multiplies A and B and puts the result in register Y. 
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    DIV Y A B
+                  </td>
+                  <td style="padding: 10px">
+                     Divides A by B and puts the result in register Y. 
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    NAND Y A B
+                  </td>
+                  <td style="padding: 10px">
+                     NANDs A and B and puts the result in register Y. 
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    OR Y A B
+                  </td>
+                  <td style="padding: 10px">
+                     ORs A and B and puts the result in register Y. 
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    NOT Y A
+                  </td>
+                  <td style="padding: 10px">
+                     NOTs A and puts the result in register Y.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    XOR Y A B
+                  </td>
+                  <td style="padding: 10px">
+                     XORs A and B and puts the result in register Y.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    LEA A B
+                  </td>
+                  <td style="padding: 10px">
+                     Loads the address of A into register B.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    JMP FUNC A
+                  </td>
+                  <td style="padding: 10px">
+                     Jumps to the position given by A. FUNC gives options for conditional jumps.
+                  </td>
+                </tr>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
