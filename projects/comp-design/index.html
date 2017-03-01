@@ -162,22 +162,6 @@
                 </tr>
                 <tr>
                   <td>
-                    SUB Y A B
-                  </td>
-                  <td style="padding: 10px">
-                     Subtracts B from A and puts the result in register Y. 
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    SUBC Y A B
-                  </td>
-                  <td style="padding: 10px">
-                     Subtracts B from A with the carry in from the carry register and puts the result in register Y. 
-                  </td>
-                </tr>
-                <tr>
-                  <td>
                     MULT Y A B
                   </td>
                   <td style="padding: 10px">
@@ -202,26 +186,18 @@
                 </tr>
                 <tr>
                   <td>
-                    OR Y A B
+                    JMP FUNC A
                   </td>
                   <td style="padding: 10px">
-                     ORs A and B and puts the result in register Y. 
+                     Jumps to the position given by A. FUNC gives options for conditional jumps.
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    NOT Y A
+                    CMP A B
                   </td>
                   <td style="padding: 10px">
-                     NOTs A and puts the result in register Y.
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    XOR Y A B
-                  </td>
-                  <td style="padding: 10px">
-                     XORs A and B and puts the result in register Y.
+                     Compares A to B and stores the result in the CPR register.
                   </td>
                 </tr>
                 <tr>
@@ -229,15 +205,23 @@
                     LEA A B
                   </td>
                   <td style="padding: 10px">
-                     Loads the address of A into register B.
+                     Loads the address of B into register A.
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    JMP FUNC A
+                    LD A B
                   </td>
                   <td style="padding: 10px">
-                     Jumps to the position given by A. FUNC gives options for conditional jumps.
+                     Load the variable from B in memory to the register A
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    LD A B
+                  </td>
+                  <td style="padding: 10px">
+                     Load the variable from B in memory to the register A
                   </td>
                 </tr>
               </table>
