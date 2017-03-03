@@ -135,11 +135,9 @@
               gates were selected as a cheaper alternative to implement the logic.
             </p>
             <h3 class="description-title"> 
-              Design phase: Instruction Set:
+              Design phase: ALU Instruction Set:
             </h3> 
             <p class="description-text"> 
-              The first step of the design process is the determination of the processor instruction set and operation bit
-              length. A good balance between performance and price was a variable length of 8 bits and an op code of 4 bits:
               <table style="text-align:center; display: table; margin: auto; margin-bottom: 20px; ">
                 <tr>
                   <td>
@@ -167,6 +165,22 @@
                 </tr>
                 <tr>
                   <td>
+                    SUB Y A B
+                  </td>
+                  <td style="padding: 10px">
+                    Subtracts B from A and puts the result in register Y. 
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    SUBC Y A B
+                  </td>
+                  <td style="padding: 10px">
+                     Subtracts B from A with the carry in from the carry register and puts the result in register Y. 
+                  </td>
+                </tr>
+                <tr>
+                  <td>
                     MULT Y A B
                   </td>
                   <td style="padding: 10px">
@@ -183,45 +197,303 @@
                 </tr>
                 <tr>
                   <td>
-                    NAND Y A B
+                    AND Y A B
                   </td>
                   <td style="padding: 10px">
-                     NANDs A and B and puts the result in register Y. 
+                     ANDs A and B and puts the result in register Y. 
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    JMP FUNC A
+                    OR Y A B
                   </td>
                   <td style="padding: 10px">
-                     Jumps to the position given by A. FUNC gives options for conditional jumps.
+                     ORs A and B and puts the result in register Y. 
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    CMP A B
+                    XOR Y A B
                   </td>
                   <td style="padding: 10px">
-                     Compares A to B and stores the result in the CPR register.
+                     XORs A and B and puts the result in register Y. 
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    LEA A B
+                    NOT Y A
                   </td>
                   <td style="padding: 10px">
-                     Loads the address of B into register A.
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    MOV A B
-                  </td>
-                  <td style="padding: 10px">
-                     Move the variable from B in memory to the register A
+                     NOTs A and puts the result in register Y. 
                   </td>
                 </tr>
               </table>
+            </p>
+            <h3 class="description-title"> 
+              Half Adder:
+            </h3> 
+            <p class="description-text"> 
+              The half adder (HA) behavior is described by the truth table:
+               <table style="text-align:center; display: table; margin: auto; margin-bottom: 20px; ">
+                <tr>
+                  <td>
+                    A
+                  </td>
+                  <td>
+                    B
+                  </td>
+                  <td>
+                    S
+                  </td>
+                  <td>
+                    C
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    0
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    0
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    0
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    1
+                  </td>
+                </tr>
+              </table>
+            </p>
+            <p class="description-text"> 
+              So its behavior can be described by the functions S = A&oplus;B and C=AB. Converting this to NAND logic gives equations
+              S = ~(~(~(AB)A)~(~(AB)B) and C = ~(~(AB)).
+              
+            </p>
+            <h3 class="description-title"> 
+              Full Adder:
+            </h3> 
+            <p class="description-text"> 
+              The full adder (FA) behavior is described by the truth table:
+               <table style="text-align:center; display: table; margin: auto; margin-bottom: 20px; ">
+                <tr>
+                  <td>
+                    A
+                  </td>
+                  <td>
+                    B
+                  </td>
+                  <td>
+                    C
+                  </td>
+                  <td>
+                    S
+                  </td>
+                  <td>
+                    C
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    0
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    0
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    0
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    1
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    0
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    1
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    1
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    1
+                  </td>
+                  <td>
+                    1
+                  </td>
+                </tr>
+                
+              </table>
+            </p>
+            <p class="description-text"> 
+              So its behavior can be described by the functions S = A&oplus;B&oplus;C and C<sub>o</sub>=(~A)(~B)C+(~A)(~C)B + (~B)(~C)A + ABC. Converting this to NAND logic gives equations
+              Y = ~(~(~(AB)A)~(~(AB)B)), S = ~(~(~(~(YC)Y)~(~(YC)C)) and C<sub>o</sub> = ~(~(AB)~(YC)).
+            </p>
+            <h3 class="description-title"> 
+              Carry-Lookahead Adder:
+            </h3> 
+            <p class="description-text"> 
+              A simple multi-bit adder is the Carry Propagate Adder which attaches the carry out of the n-th adder to the carry in of the (n+1) adder. The flaw with this adder design is that in order
+              to calculate the sum for each bit, you must wait for the previous bit. The carry lookahead unit allows the sums to be computed in parallel at the expense of a minimal increase in area. To
+              do this, we replace the full and half adders with partial full adders (PFA) and partial half adders (PHA) which create two signals, propagate and generate, instead of locally generating a carry.
+              The equations for these signals are P = A + B and G = AB, converting these to NAND gives P = ~(~(A)~(B)) and G = ~(~(AB)), however we can use ~G = ~(AB) as an output. The carries
+              for each bit can then be calculated with C<sub>i+1</sub> = P<sub>i</sub>C<sub>i</sub> + G<sub>i</sub>.
             </p>
           </div>
         </div>
