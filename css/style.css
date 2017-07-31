@@ -9,10 +9,8 @@ body{
     margin: 0;
     height: 100%;
     background: #FFF8DD;
-    width: 100vw;
-    overflow-y: hidden;
-    overflow-x: auto;
-    min-width: 640px;
+    width: 100%;
+    overflow: hidden;
 }
 
 a{
@@ -194,7 +192,7 @@ a{
   background-color: #e0e0e0;
 }
 
-.box-a{ border-color: black; background: #FFFEDB}
+.box-a{ border-color: black; background: #FFFEDB;}
 .box-b{ border-style: none; background: white;}
 
 .p-25{ width: 15%; min-width: 250px}
@@ -205,7 +203,6 @@ a{
   height: 95.9%;
   clear: both;
   display: table;
-  min-width: 752px;
   margin: 0;
 }
 
@@ -223,8 +220,8 @@ a{
   font-family: AdobeGothicStd-Bold;
   text-align: center;
   color: #F85A3E;
-  font-size: 30vh;
-  line-height: 30vh;
+  font-size: 15vw;
+  line-height: 15vw;
   margin: 0 20px 0 20px;
   border-width: 5px;
 }
@@ -377,13 +374,14 @@ a{
     position: relative;
     top: 0;
     margin: 0;
-    min-width: 752px;
+    float: 0;
     height: 50px;
-    width: auto
+    width: 100%;
     list-style-type: none;
     padding: 0;
     text-align: left;
     font-family: AdobeGothicStd-Bold, sans-serif;
+    font-style: bold;
     background: rgba(255,255,255,.8);
     border-bottom: 2px;
     border-bottom-style: solid;
